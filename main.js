@@ -17,9 +17,19 @@ introDialog.showModal();
 introDialogCloseButton.addEventListener("click", function closeIntroDialog() {
     introDialog.close();
 });
+//whenever dialog closes, initial the audio system
+introDialog.addEventListener("close",toneInit);
 
 //we put the whole function inside the event listener instead as its only called there
 //function closeIntroDialog{}
+
+//}
+
+////Tone
+//run to setup our audio system
+function toneInit(){
+    synth.connect(Tone.Destination);
+}
 
 // do something when this button is clicked
 testbutton.addEventListener("click", playNote)
