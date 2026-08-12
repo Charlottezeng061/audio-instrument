@@ -1,0 +1,46 @@
+@import url("https://use.typekit.net/zlg4hjm.css");
+/* this is where we're storing our custom variables*/
+:root{
+    --colour-01: white;
+    --colour-02:black;
+    --colour-03:lightgrey;
+    --colour-04:darkgrey;
+}
+h1{
+    font-family: "gelica", sans-serif;
+font-weight: 500;
+font-style: normal;
+}
+
+@media(prefers-color-scheme: dark){
+    :root{
+    --colour-01: black;
+    --colour-02:white;
+    --colour-03:darkgrey;
+    --colour-04:lightgrey;
+}
+}
+
+body{
+   font-family: "proxima-nova", sans-serif;
+font-weight: 300;
+font-style: normal;
+background-color: var(--colour-01);
+color: var(--colour-02)
+}
+
+dialog[open]{
+    background-color: var(--colour-01);
+    color: var(--colour-02);
+    margin:auto;
+    padding:1rem;
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    border: 0.25rem double var(--colour-03);
+}
+
+button{
+    border: 0.25rem double var(--colour-03);
+}
