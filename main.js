@@ -14,9 +14,9 @@ const synth = new Tone.Synth().toDestination();
 
 ////Dialog
 introDialog.showModal();
-introDialogCloseButton.addEventListener("click", function closeIntroDialog);{
+introDialogCloseButton.addEventListener("click", function closeIntroDialog() {
     introDialog.close();
-}
+});
 
 //we put the whole function inside the event listener instead as its only called there
 //function closeIntroDialog{}
