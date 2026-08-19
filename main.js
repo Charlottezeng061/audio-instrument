@@ -7,12 +7,12 @@ const introDialogCloseButton = document.getElementById("intro-dialog-close");
 //show the found element in oour browser console
 //console.log(introDialog);
 // find out test button
-const testbutton = document.getElementById('test-button');
+const testButton = document.getElementById('test-button');
 // find my key button for testing
 const key =document.getElementById("key-test");
 // init our synth
 //changed this to poly synth
-const synth = new Tone.Synth().toDestination();
+const synth = new Tone.PolySynth();
 //is the user currently holding down the key
 let mouseButtonHeld = false;
 //if user holds down key, set to true, then if they let it up, set to false
@@ -26,6 +26,7 @@ mouseButtonHeld = false;
 
 ////Dialog
 introDialog.showModal();
+// close dialog when user clicks
 introDialogCloseButton.addEventListener("click", function closeIntroDialog() {
     introDialog.close();
 });
@@ -44,7 +45,7 @@ function toneInit(){
 }
 
 // do something when this button is clicked
-testbutton.addEventListener("click", playNote);
+testButton.addEventListener("click", playNote);
 
 // fuction that runs when button is clicked
 function playNote(){
@@ -52,19 +53,20 @@ function playNote(){
 synth.triggerAttackRelease("c4", "8n");
 }
 
-function playNote(e){
+function playDataNote(e){
     console.log(e);
     let buttonClicked = e.target;
     //console.log(buttonClicked);
     let note = buttonClicked.dataset.note;
     //console.log(note);
-    synth.triggerAttackRelease("d4","8n");
+    synth.triggerAttackRelease(note,"8n");
 }
 function startNote (e){
 // find key that was pressed
 let keyPressed = e.target;
 // find the note associated with the key
-let note = keyPresssed.dataset.note;
+let note = keyPressed.dataset.note;
+//console.log(note);
 synth.triggerAttack(note);
 }
 
@@ -74,6 +76,7 @@ function endNote(e){
     synth.triggerRelease(note);
 
 }
+
 key.addEventListener("mousedown", startNote);
 key.addEventListener("mouseup", endNote);
 key.addEventListener("mouseleave", endNote);
