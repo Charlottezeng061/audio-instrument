@@ -79,8 +79,8 @@ key.addEventListener("mouseup", endNote);
 key.addEventListener("mouseleave", endNote);
 //if user is holding mouse button down when entering the key, play note
 key.addEventListener("mouseenter",function(e){
-    if (mouseButtonHeld)=true) {
+    if (mouseButtonHeld===true) {
         startNote(e);
     }
- })
+ });
 testButton.addEventListener("click",playDataNote);
